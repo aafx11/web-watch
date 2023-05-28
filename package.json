@@ -1,0 +1,39 @@
+{
+  "name": "web-tracker",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint --fix",
+    "prepare": "husky install",
+    "ci": "run-s lint test build",
+    "changeset": "changeset",
+    "packages-version": "changeset version",
+    "publish": "changeset publish --registry=https://registry.npmjs.com/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@changesets/cli": "^2.26.1",
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-eslint": "^9.0.4",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@types/node": "^20.2.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "commitlint": "^17.6.3",
+    "eslint": "^8.41.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "rollup": "^3.23.0",
+    "rollup-plugin-dts": "^5.3.0",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "rollup-plugin-uglify": "^6.0.4",
+    "typescript": "^5.0.4"
+  }
+}

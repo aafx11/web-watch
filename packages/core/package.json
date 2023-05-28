@@ -1,0 +1,21 @@
+{
+  "name": "@web-watch/core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "publishConfig": {
+    "main": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@web-watch/common": "workspace:*",
+    "@web-watch/types": "workspace:*",
+    "@web-watch/utils": "workspace:*"
+  }
+}
