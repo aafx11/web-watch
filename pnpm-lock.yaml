@@ -22,7 +22,10 @@ importers:
       rollup-plugin-dts: ^5.3.0
       rollup-plugin-typescript2: ^0.34.1
       rollup-plugin-uglify: ^6.0.4
+      tslib: ^2.5.2
       typescript: ^5.0.4
+    dependencies:
+      tslib: 2.5.2
     devDependencies:
       '@changesets/cli': 2.26.1
       '@commitlint/cli': 17.6.3
@@ -44,16 +47,30 @@ importers:
       rollup-plugin-uglify: 6.0.4_rollup@3.23.0
       typescript: 5.0.4
 
+  packages/browser:
+    specifiers:
+      '@web-watch/core': workspace:^1.0.0
+      '@web-watch/shared': workspace:^1.0.0
+      '@web-watch/types': workspace:^1.0.0
+      '@web-watch/utils': workspace:^1.0.0
+    dependencies:
+      '@web-watch/core': link:../core
+      '@web-watch/shared': link:../shared
+      '@web-watch/types': link:../types
+      '@web-watch/utils': link:../utils
+
   packages/common:
     specifiers: {}
 
   packages/core:
     specifiers:
       '@web-watch/common': workspace:*
+      '@web-watch/shared': workspace:^1.0.0
       '@web-watch/types': workspace:*
       '@web-watch/utils': workspace:*
     dependencies:
       '@web-watch/common': link:../common
+      '@web-watch/shared': link:../shared
       '@web-watch/types': link:../types
       '@web-watch/utils': link:../utils
 
@@ -73,10 +90,12 @@ importers:
   packages/types:
     specifiers:
       '@web-watch/common': workspace:*
+      '@web-watch/core': workspace:^1.0.0
       '@web-watch/shared': workspace:*
-      '@web-watch/utils': workspace:^1.0.0
+      '@web-watch/utils': workspace:*
     dependencies:
       '@web-watch/common': link:../common
+      '@web-watch/core': link:../core
       '@web-watch/shared': link:../shared
       '@web-watch/utils': link:../utils
 
@@ -85,12 +104,14 @@ importers:
       '@types/ua-parser-js': ^0.7.36
       '@web-watch/common': '*'
       '@web-watch/core': '*'
+      '@web-watch/shared': workspace:^1.0.0
       '@web-watch/types': '*'
       ua-parser-js: ^1.0.35
     dependencies:
       '@types/ua-parser-js': 0.7.36
       '@web-watch/common': link:../common
       '@web-watch/core': link:../core
+      '@web-watch/shared': link:../shared
       '@web-watch/types': link:../types
       ua-parser-js: 1.0.35
 
@@ -3487,7 +3508,6 @@ packages:
 
   /tslib/2.5.2:
     resolution: {integrity: sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==}
-    dev: true
 
   /tsutils/3.21.0_typescript@5.0.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}

@@ -1,3 +1,6 @@
+import { BreadcrumbPushData } from "./breadcrumb";
+import { Breadcrumb } from '@web-watch/core';
+import { TransportDataType } from "./transport";
 import { VueInstance } from "./vue";
 type CANCEL = null | undefined | boolean;
 
@@ -71,5 +74,21 @@ export interface BaseOptionsFieldsType {
 
 // 钩子函数
 export interface BaseOptionsHooksType {
+  // 发送事件前会调用
+  beforeDataReport?(event: TransportDataType): Promise<TransportDataType | null | CANCEL> | TransportDataType | any | CANCEL | null;
+  // 发送前都会调用
+  configReportUrl?(event: TransportDataType, url: string): string;
+  // 添加用户行为事件前都会调用
+  beforePushBreadcrumb?(breadcrumb: Breadcrumb, hint: BreadcrumbPushData): BreadcrumbPushData | CANCEL;
+  // 拦截用户页面的ajax请求，并在ajax请求发送前执行该hook，可以对用户发送的ajax请求做xhr.setRequestHeader
+  beforeAppAjaxSend?(config: IRequestHeaderConfig, setRequestHeader: IBeforeAppAjaxSendConfig): void;
+  // 在beforeDataReport后面调用，在整合上报数据和本身SDK信息数据前调用，当前函数执行完后立即将数据错误信息上报至服务端, trackerId的意义可以区分每个错误影响的用户数量
+  backTrackerId?(): string | number;
+}
 
+// 基础配置集成属性(基础配置项属性,钩子函数)
+export type BaseOptionsFieldsIntegrationType = BaseOptionsFieldsType & BaseOptionsHooksType;
+
+export interface BaseOptionsType<O extends BaseOptionsFieldsIntegrationType> extends BaseOptionsFieldsIntegrationType {
+  bindOptions(options: O): void;
 }

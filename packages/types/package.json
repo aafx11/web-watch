@@ -15,7 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "@web-watch/common": "workspace:*",
+    "@web-watch/core": "workspace:*",
     "@web-watch/shared": "workspace:*",
-    "@web-watch/utils": "workspace:^1.0.0"
+    "@web-watch/utils": "workspace:*"
   }
 }

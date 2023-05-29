@@ -1,13 +1,14 @@
-import { TrackActionType } from '@web-watch/shared'
+import { TrackActionType } from '@web-watch/shared';
 
 // 设备信息
 export interface DeviceInfo {
   //网络类型: 4g,3g,5g,wifi
-  netType: string
-  clientWidth: number
-  clientHeight: number
+  netType: string;
+  clientWidth: number;
+  clientHeight: number;
   // 像素密度倍率(计算屏幕实际宽高 可使用此参数： 例 height = clientHeight * radio)
-  ratio: number
+  ratio: number,
+  [key: string]: any;
 }
 
 /**
@@ -16,19 +17,19 @@ export interface DeviceInfo {
  */
 export interface TrackReportDataType {
   // uuid
-  id?: string
+  id?: string;
   // 埋点code 一般由人为传进来，可以自定义规范
-  trackId?: string
+  trackId?: string;
   // 埋点类型，可扩展
-  actionType?: TrackActionType | any
+  actionType?: TrackActionType | any;
   // 埋点开始时间
-  startTime?: number
+  startTime?: number;
   // 埋点停留时间
-  durationTime?: number
+  durationTime?: number;
   // 上报时间
-  trackTime?: number
+  trackTime?: number;
   // 不需要重写，默认为true，表示埋点类型的上报，不用进行errorId生成
-  isTrack?: boolean
+  isTrack?: boolean;
   // anything for developer
-  [key: string]: any
+  [key: string]: any;
 }
